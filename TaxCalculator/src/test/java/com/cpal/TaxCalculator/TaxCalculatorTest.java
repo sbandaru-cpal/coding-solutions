@@ -1,4 +1,4 @@
-package com.cpal.PricingApp;
+package com.cpal.TaxCalculator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PricingAppTest {
+public class TaxCalculatorTest {
 
 	@Test
 	public void contextLoads() {
