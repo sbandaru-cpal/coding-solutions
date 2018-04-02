@@ -4,25 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cpal</groupId>
-    <artifactId>taxcalculator</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>tax-calculator</artifactId>
+    <version>${project.version}</version>
     <packaging>jar</packaging>
 
     <name>taxcalculator</name>
     <description>TaxCalculator</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.cpal</groupId>
+        <artifactId>coding-solutions</artifactId>
+        <version>1.0</version>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>

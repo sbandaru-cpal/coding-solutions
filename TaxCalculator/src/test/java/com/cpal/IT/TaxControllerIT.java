@@ -33,9 +33,8 @@ public class TaxControllerIT {
     }
 
     @Test
-    public void getTax() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(base.toString(),
-                String.class);
+    public void getTax_returnsValidResponse() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(base.toString(),String.class);
         assertThat(response.getBody(), equalTo("Return Tax results for all the states!"));
     }
 }
