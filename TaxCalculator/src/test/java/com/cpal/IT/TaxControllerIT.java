@@ -1,4 +1,4 @@
-package com.cpal.IT;
+package com.cpal.it;
 
 import org.junit.Before;
 import org.junit.Test;
