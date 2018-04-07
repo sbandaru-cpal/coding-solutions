@@ -8,13 +8,13 @@ import org.junit.Test;
 import com.cpal.tax.calculator.client.TaxCalculatorClient;
 
 public class TaxCalculatorIT {
-	
-	private TaxCalculatorClient taxCalculatorClient = new TaxCalculatorClient("localhost", "8888"); 
-	
+
+	private TaxCalculatorClient taxCalculatorClient = new TaxCalculatorClient("localhost", "8888");
+
 	@Test
-    public void getTax_returnsValidResponse() throws Exception {
-        
-        assertThat(taxCalculatorClient.getTax(), equalTo("Return Tax results for all the states!"));
-    }
+	public void getTax_returnsValidResponse() throws Exception {
+
+		assertThat(taxCalculatorClient.getTax(), equalTo("Return Tax results for all the states!"));
+	}
 
 }
