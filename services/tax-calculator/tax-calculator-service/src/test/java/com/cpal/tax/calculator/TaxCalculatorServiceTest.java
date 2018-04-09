@@ -1,4 +1,4 @@
-package com.cpal;
+package com.cpal.tax.calculator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
