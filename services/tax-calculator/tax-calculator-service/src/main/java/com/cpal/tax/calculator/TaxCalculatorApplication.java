@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TaxCalculatorService {
+public class TaxCalculatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TaxCalculatorService.class, args);
+		SpringApplication.run(TaxCalculatorApplication.class, args);
 	}
 }

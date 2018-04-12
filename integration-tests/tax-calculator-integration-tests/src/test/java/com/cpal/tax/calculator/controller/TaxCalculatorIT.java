@@ -1,32 +1,24 @@
 package com.cpal.tax.calculator.controller;
 
-import com.cpal.tax.calculator.client.TaxCalculatorClient;
-import com.cpal.tax.calculator.vo.TypeData;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import com.cpal.tax.calculator.api.TypeData;
+import com.cpal.tax.calculator.client.TaxCalculatorClient;
 
 public class TaxCalculatorIT {
 
 	private TaxCalculatorClient taxCalculatorClient = new TaxCalculatorClient("localhost", "8888");
 
 	@Test
-	public void getTax_returnsValidResponse()  {
-		assertThat(taxCalculatorClient.getTax(), equalTo("Return Tax results for all the states!"));
-	}
-
-	@Test
 	public void getStatesInfo_returnsValidResponse() {
-		List<TypeData> typeDataList  = (ArrayList<TypeData>) taxCalculatorClient.getAllStates();
+		List<TypeData> typeDataList  = taxCalculatorClient.getAllStates();
 
-		TypeData typeDataFirstElement = typeDataList.get(0);
-		assertThat(typeDataFirstElement.getCode(), is("AL"));
-		assertThat(typeDataFirstElement.getValue(), is("Alaska"));
+		assertThat(typeDataList.size(), is(50));
 	}
 
 }
