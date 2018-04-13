@@ -12,6 +12,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>tax-calculator-service</module>
-    <module>tax-calculator-client</module>
+	    <module>tax-calculator-client</module>
+	    <module>tax-calculator-api</module>
   </modules>
 </project>
