@@ -10,7 +10,6 @@
 	</parent>
 	<artifactId>services</artifactId>
 	<name>services</name>
-	<url>http://maven.apache.org</url>
 	<packaging>pom</packaging>
 	<modules>
 		<module>tax-calculator</module>

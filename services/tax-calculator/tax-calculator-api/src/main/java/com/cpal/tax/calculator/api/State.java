@@ -1,6 +1,6 @@
 package com.cpal.tax.calculator.api;
 
-public enum States {
+public enum State {
 
 	AL("Alabama"),
 	AK("Alaska"),
@@ -51,11 +51,12 @@ public enum States {
 	WA("Washington"),
 	WV("West Virginia"),
 	WI("Wisconsin"),
-	WY("Wyoming");
+	WY("Wyoming"),
+	DC("D.C");
 	
 	private String description;
 	
-	private States(String description) {
+	private State(String description) {
 		this.description = description;
 	}
 

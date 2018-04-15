@@ -3,12 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.cpal</groupId>
-		<artifactId>coding-solutions</artifactId>
+		<artifactId>services</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>tax-calculator</artifactId>
 	<name>tax-calculator</name>
-	<url>http://maven.apache.org</url>
 	<packaging>pom</packaging>
 	<modules>
 		<module>tax-calculator-service</module>
