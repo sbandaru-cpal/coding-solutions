@@ -28,7 +28,7 @@ public class StateServiceTest {
 	 
 	@Test
     public void calculateTotalPrice_returnTotalPriceForCalifornia() {
-        assertThat(stateService.calculateTotalPrice(State.CA, new BigDecimal(1000)),Matchers.comparesEqualTo(new BigDecimal(1072.50)));
+        assertThat(stateService.calculateTaxedTotalPrice(State.CA, new BigDecimal(1000)),Matchers.comparesEqualTo(new BigDecimal(1072.50)));
     }
 
 }

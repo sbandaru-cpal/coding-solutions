@@ -29,6 +29,6 @@ public class TaxController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/calculate/{state}/{price}")
     public @ResponseBody BigDecimal calculate(@PathVariable State state, @PathVariable BigDecimal price) {
-        return stateService.calculateTotalPrice(state, price);
+        return stateService.calculateTaxedTotalPrice(state, price);
     }
 }

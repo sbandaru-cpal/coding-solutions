@@ -21,7 +21,7 @@ public class StateService {
 		return stateDAO.findAllStates();
 	}
 	
-	public BigDecimal calculateTotalPrice(State state, BigDecimal price) {
+	public BigDecimal calculateTaxedTotalPrice(State state, BigDecimal price) {
 		BigDecimal taxPercent = stateDAO.findStateTaxRate(state).divide(new BigDecimal(100));
 		return price.add(price.multiply(taxPercent)).setScale(2, RoundingMode.HALF_UP);
     }
