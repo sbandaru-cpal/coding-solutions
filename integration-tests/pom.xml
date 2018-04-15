@@ -10,7 +10,6 @@
 	</parent>
 	<artifactId>integration-tests</artifactId>
 	<name>integration-tests</name>
-	<url>http://maven.apache.org</url>
 	<packaging>pom</packaging>
 	<modules>
 		<module>tax-calculator-integration-tests</module>
