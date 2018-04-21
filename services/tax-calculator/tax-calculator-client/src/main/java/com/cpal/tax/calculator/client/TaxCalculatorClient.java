@@ -3,6 +3,7 @@ package com.cpal.tax.calculator.client;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.cpal.tax.calculator.api.TaxPrice;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,18 @@ public class TaxCalculatorClient {
 		ResponseEntity<BigDecimal> rateResponse = taxCalculatorTemplate.exchange(builder.toUriString(),
 						HttpMethod.POST, null, new ParameterizedTypeReference<BigDecimal>() {
 				});
+		return rateResponse.getBody();
+	}
+
+	public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseURL+"calculateAllStates/")
+				.path(price.toString());
+
+		ResponseEntity<List<TaxPrice>> rateResponse =
+				taxCalculatorTemplate.exchange(builder.toUriString(),
+						HttpMethod.GET, null, new ParameterizedTypeReference<List<TaxPrice>>() {
+						});
+
 		return rateResponse.getBody();
 	}
 

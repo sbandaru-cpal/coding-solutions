@@ -30,7 +30,7 @@ public class StateDAOTest {
     
     @Test
     public void findStateTax_returnStateTaxForCalifornia() {
-        assertThat(subject.findStateTaxRate(State.CA), is(new BigDecimal(7.25)));
+        assertThat(subject.findStateTaxRate(State.CA.name()), is(new BigDecimal(7.25)));
     }
     
     @Test(expected=NullPointerException.class)

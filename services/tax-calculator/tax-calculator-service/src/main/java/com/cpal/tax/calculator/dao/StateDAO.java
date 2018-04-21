@@ -21,8 +21,8 @@ public class StateDAO {
         return STATES;
     }
     
-    public BigDecimal findStateTaxRate(State state) {
-        return StateTax.valueOf(state.name()).getTaxRate();
+    public BigDecimal findStateTaxRate(String state) {
+        return StateTax.valueOf(state).getTaxRate();
     }
 
 }
