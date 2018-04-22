@@ -8,15 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.math.BigDecimal.valueOf;
+import static com.cpal.tax.calculator.utils.TaxUtil.calculatePercentageAmount;
 
 @Service
 public class StateService {
-    private static final int ROUNDING = 2;
 
     @Autowired
     private StateDAO stateDAO;
@@ -26,38 +24,32 @@ public class StateService {
     }
 
     public BigDecimal calculateTaxedTotalPrice(State state, BigDecimal price) {
-        BigDecimal taxPercent = getStateTaxRate(state.name());
-        BigDecimal taxableAmount = calculateTaxableAmount(price, taxPercent);
-        return price.add(taxableAmount);
-
+        BigDecimal taxPercent = getStateTaxRate(state);
+        return price.add(calculatePercentageAmount(price, taxPercent));
     }
 
     public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {
-        List<TypeData> states = getAllStates();
         List<TaxPrice> taxPrices = new ArrayList<>();
-        for (TypeData typeData : states) {
-            taxPrices.add(buildTaxPrice(price, typeData));
+        for (State state : State.values()) {
+            taxPrices.add(buildTaxPrice(price, state));
         }
         return taxPrices;
     }
 
-    private TaxPrice buildTaxPrice(BigDecimal price, TypeData typeData) {
+    private TaxPrice buildTaxPrice(BigDecimal price, State state) {
         TaxPrice taxPrice = new TaxPrice();
-        BigDecimal stateTaxRate = getStateTaxRate(typeData.getCode());
-        BigDecimal taxableAmount = calculateTaxableAmount(price, stateTaxRate);
+        BigDecimal stateTaxRate = getStateTaxRate(state);
+        BigDecimal taxableAmount = calculatePercentageAmount(price, stateTaxRate);
         taxPrice.setTaxRate(stateTaxRate);
         taxPrice.setTaxAmount(taxableAmount);
-        taxPrice.setStateCode(typeData.getCode());
+        taxPrice.setState(state);
         taxPrice.setTotalAmount(price.add(taxableAmount));
         return taxPrice;
     }
 
-    private BigDecimal getStateTaxRate(String state) {
+    private BigDecimal getStateTaxRate(State state) {
         return stateDAO.findStateTaxRate(state);
     }
 
-    private BigDecimal calculateTaxableAmount(BigDecimal price, BigDecimal taxRate) {
-        return (price.multiply(taxRate)).divide(valueOf(100)).setScale(ROUNDING, RoundingMode.HALF_UP);
-    }
 
 }

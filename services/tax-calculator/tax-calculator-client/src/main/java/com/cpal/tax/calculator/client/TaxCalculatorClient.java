@@ -44,7 +44,7 @@ public class TaxCalculatorClient {
 	}
 
 	public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseURL+"calculateAllStates/")
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseURL+"calculate/allStates/")
 				.path(price.toString());
 
 		ResponseEntity<List<TaxPrice>> rateResponse =

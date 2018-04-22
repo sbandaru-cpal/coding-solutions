@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class TaxPrice {
 
     private BigDecimal taxRate;
-    private String stateCode;
+    private State state;
     private BigDecimal taxAmount;
     private BigDecimal totalAmount;
 
@@ -33,11 +33,11 @@ public class TaxPrice {
         this.totalAmount = totalAmount;
     }
 
-    public String getStateCode() {
-        return stateCode;
+    public State getState() {
+        return state;
     }
 
-    public void setStateCode(String stateCode) {
-        this.stateCode = stateCode;
+    public void setState(State state) {
+        this.state = state;
     }
 }

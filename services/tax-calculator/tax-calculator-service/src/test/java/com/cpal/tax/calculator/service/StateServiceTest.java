@@ -41,7 +41,7 @@ public class StateServiceTest {
         List<TaxPrice> actual = subject.calculateTotalPriceForAllStates(PRICE);
 
         assertThat(actual.size(), is(51));
-        assertThat(actual.get(0).getStateCode(), is("AL"));
+        assertThat(actual.get(0).getState().name(), is("AL"));
         assertThat(actual.get(0).getTaxRate(), isExactly(4));
         assertThat(actual.get(0).getTaxAmount(), isExactly(40));
         assertThat(actual.get(0).getTotalAmount(), isExactly(1040));

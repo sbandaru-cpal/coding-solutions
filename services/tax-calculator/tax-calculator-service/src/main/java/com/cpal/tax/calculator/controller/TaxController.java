@@ -33,7 +33,7 @@ public class TaxController {
         return stateService.calculateTaxedTotalPrice(state, price);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/calculateAllStates/{price}")
+    @RequestMapping(method = RequestMethod.GET, value = "/calculate/allStates/{price}")
     public @ResponseBody List<TaxPrice> calculate(@PathVariable BigDecimal price) {
         return stateService.calculateTotalPriceForAllStates(price);
     }
