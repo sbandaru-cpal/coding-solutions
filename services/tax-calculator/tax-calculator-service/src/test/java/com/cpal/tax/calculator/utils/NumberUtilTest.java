@@ -65,9 +65,7 @@ public class NumberUtilTest {
     public void calculatePercentageAmount_whenRateIsNull_throwsException() {
         thrown.expect(UnsupportedOperationException.class);
         thrown.expectMessage(is("Invalid operation for Calculating"));
-        BigDecimal actual = calculatePercentageAmount(valueOf(1000), null);
-
-        assertThat(actual, nullValue());
+        calculatePercentageAmount(valueOf(1000), null);
     }
 
     @Test
