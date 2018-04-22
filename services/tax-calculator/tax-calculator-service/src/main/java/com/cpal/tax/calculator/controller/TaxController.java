@@ -29,12 +29,12 @@ public class TaxController {
     }
     
     @RequestMapping(method = RequestMethod.POST, value = "/calculate/{state}/{price}")
-    public @ResponseBody BigDecimal calculate(@PathVariable State state, @PathVariable BigDecimal price) {
+    public @ResponseBody BigDecimal calculateTax(@PathVariable State state, @PathVariable BigDecimal price) {
         return stateService.calculateTaxedTotalPrice(state, price);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/calculate/allStates/{price}")
-    public @ResponseBody List<TaxPrice> calculate(@PathVariable BigDecimal price) {
+    @RequestMapping(method = RequestMethod.GET, value = "/calculate/{price}")
+    public @ResponseBody List<TaxPrice> calculateTax(@PathVariable BigDecimal price) {
         return stateService.calculateTotalPriceForAllStates(price);
     }
 }
