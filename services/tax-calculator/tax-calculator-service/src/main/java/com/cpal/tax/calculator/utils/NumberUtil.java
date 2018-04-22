@@ -11,17 +11,22 @@ public class NumberUtil {
     private static final int ROUNDING = 2;
 
     public static BigDecimal calculatePercentageAmount(BigDecimal price, BigDecimal rate) {
-        if(anyNulls(price, rate)){
+        if (price == null) {
             return null;
+        } if (rate == null){
+            throw new UnsupportedOperationException("Invalid operation for Calculating");
         }
         return (price.multiply(rate)).divide(valueOf(100)).setScale(ROUNDING, RoundingMode.HALF_UP);
     }
 
-    public static BigDecimal add(BigDecimal price, BigDecimal rate){
-        if(anyNulls(price, rate)){
-            return null;
+    public static BigDecimal add(BigDecimal price, BigDecimal taxableAmount) {
+        if (price == null) {
+            return taxableAmount;
         }
-        return price.add(rate);
+        if (taxableAmount == null) {
+            return price;
+        }
+        return price.add(taxableAmount);
     }
 
     private static boolean anyNulls(BigDecimal price, BigDecimal rate) {

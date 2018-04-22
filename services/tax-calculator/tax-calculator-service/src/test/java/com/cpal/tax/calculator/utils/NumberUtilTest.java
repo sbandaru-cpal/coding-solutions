@@ -1,7 +1,9 @@
 package com.cpal.tax.calculator.utils;
 
 import org.hamcrest.Matcher;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,11 +16,15 @@ import static java.math.BigDecimal.ZERO;
 import static java.math.BigDecimal.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class NumberUtilTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void calculatePercentageAmount_whenPriceAndRateValid_returnsCalculatedAmount() {
@@ -42,14 +48,23 @@ public class NumberUtilTest {
     }
 
     @Test
-    public void add_whenPriceIsNull_returnsNull() {
+    public void add_whenPriceIsNull_returnsRate() {
         BigDecimal actual = add(null, valueOf(5));
 
-        assertThat(actual, nullValue());
+        assertThat(actual, isExactly(5));
     }
 
     @Test
-    public void calculatePercentageAmount_whenRateIsNull_returnsNull() {
+    public void add_whenRateIsNull_returnsPrice() {
+        BigDecimal actual = add(valueOf(1000), null);
+
+        assertThat(actual, isExactly(1000));
+    }
+
+    @Test
+    public void calculatePercentageAmount_whenRateIsNull_throwsException() {
+        thrown.expect(UnsupportedOperationException.class);
+        thrown.expectMessage(is("Invalid operation for Calculating"));
         BigDecimal actual = calculatePercentageAmount(valueOf(1000), null);
 
         assertThat(actual, nullValue());
