@@ -11,7 +11,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.cpal.tax.calculator.utils.TaxUtil.calculatePercentageAmount;
+import static com.cpal.tax.calculator.utils.NumberUtil.add;
+import static com.cpal.tax.calculator.utils.NumberUtil.calculatePercentageAmount;
 
 @Service
 public class StateService {
@@ -25,7 +26,7 @@ public class StateService {
 
     public BigDecimal calculateTaxedTotalPrice(State state, BigDecimal price) {
         BigDecimal taxPercent = getStateTaxRate(state);
-        return price.add(calculatePercentageAmount(price, taxPercent));
+        return add(price,calculatePercentageAmount(price, taxPercent));
     }
 
     public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {
@@ -43,7 +44,7 @@ public class StateService {
         taxPrice.setTaxRate(stateTaxRate);
         taxPrice.setTaxAmount(taxableAmount);
         taxPrice.setState(state);
-        taxPrice.setTotalAmount(price.add(taxableAmount));
+        taxPrice.setTotalAmount(add(price, taxableAmount));
         return taxPrice;
     }
 

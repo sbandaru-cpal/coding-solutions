@@ -2,7 +2,6 @@ package com.cpal.tax.calculator.service;
 
 import com.cpal.tax.calculator.api.State;
 import com.cpal.tax.calculator.api.TaxPrice;
-import org.hamcrest.Matcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static com.cpal.tax.calculator.utils.NumberUtilTest.isExactly;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,9 +44,5 @@ public class StateServiceTest {
         assertThat(actual.get(0).getTaxRate(), isExactly(4));
         assertThat(actual.get(0).getTaxAmount(), isExactly(40));
         assertThat(actual.get(0).getTotalAmount(), isExactly(1040));
-    }
-
-    public static Matcher<BigDecimal> isExactly(final double value) {
-        return closeTo(BigDecimal.valueOf(value), BigDecimal.ZERO);
     }
 }
