@@ -1,19 +1,20 @@
 package com.cpal.tax.calculator.service;
 
-import com.cpal.tax.calculator.api.State;
-import com.cpal.tax.calculator.api.TaxPrice;
+import static com.cpal.common.unit.test.CommonMatcher.isExactly;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
+import java.math.BigDecimal;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import static com.cpal.tax.calculator.utils.NumberUtilTest.isExactly;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import com.cpal.tax.calculator.api.State;
+import com.cpal.tax.calculator.api.TaxPrice;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest

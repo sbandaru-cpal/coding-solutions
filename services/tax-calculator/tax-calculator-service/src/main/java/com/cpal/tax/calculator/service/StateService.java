@@ -1,18 +1,19 @@
 package com.cpal.tax.calculator.service;
 
-import com.cpal.tax.calculator.api.State;
-import com.cpal.tax.calculator.api.TaxPrice;
-import com.cpal.tax.calculator.api.TypeData;
-import com.cpal.tax.calculator.dao.StateDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import static com.cpal.common.util.NumberUtil.add;
+import static com.cpal.tax.calculator.util.TaxUtil.calculateSalesTax;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.cpal.tax.calculator.utils.NumberUtil.add;
-import static com.cpal.tax.calculator.utils.NumberUtil.calculatePercentageAmount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cpal.tax.calculator.api.State;
+import com.cpal.tax.calculator.api.TaxPrice;
+import com.cpal.tax.calculator.api.TypeData;
+import com.cpal.tax.calculator.dao.StateDAO;
 
 @Service
 public class StateService {
@@ -26,7 +27,7 @@ public class StateService {
 
     public BigDecimal calculateTaxedTotalPrice(State state, BigDecimal price) {
         BigDecimal taxPercent = getStateTaxRate(state);
-        return add(price,calculatePercentageAmount(price, taxPercent));
+        return add(price,calculateSalesTax(price, taxPercent));
     }
 
     public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {
@@ -40,7 +41,7 @@ public class StateService {
     private TaxPrice buildTaxPrice(BigDecimal price, State state) {
         TaxPrice taxPrice = new TaxPrice();
         BigDecimal stateTaxRate = getStateTaxRate(state);
-        BigDecimal taxableAmount = calculatePercentageAmount(price, stateTaxRate);
+        BigDecimal taxableAmount = calculateSalesTax(price, stateTaxRate);
         taxPrice.setTaxRate(stateTaxRate);
         taxPrice.setTaxAmount(taxableAmount);
         taxPrice.setState(state);
