@@ -14,7 +14,7 @@ public class NumberUtil {
         if (price == null) {
             return null;
         } if (rate == null){
-            throw new IllegalArgumentException("Invalid argument for Calculating percentage");
+            throw new IllegalArgumentException("Invalid argument for calculating percentage");
         }
         return (price.multiply(rate)).divide(valueOf(100)).setScale(ROUNDING, RoundingMode.HALF_UP);
     }
