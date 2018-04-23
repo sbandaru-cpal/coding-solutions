@@ -14,7 +14,7 @@ public class NumberUtil {
         if (price == null) {
             return null;
         } if (rate == null){
-            throw new UnsupportedOperationException("Invalid operation for Calculating");
+            throw new IllegalArgumentException("Invalid argument for Calculating percentage");
         }
         return (price.multiply(rate)).divide(valueOf(100)).setScale(ROUNDING, RoundingMode.HALF_UP);
     }
@@ -27,12 +27,5 @@ public class NumberUtil {
             return price;
         }
         return price.add(taxableAmount);
-    }
-
-    private static boolean anyNulls(BigDecimal price, BigDecimal rate) {
-        if(price == null || rate == null){
-            return true;
-        }
-        return false;
     }
 }

@@ -63,8 +63,8 @@ public class NumberUtilTest {
 
     @Test
     public void calculatePercentageAmount_whenRateIsNull_throwsException() {
-        thrown.expect(UnsupportedOperationException.class);
-        thrown.expectMessage(is("Invalid operation for Calculating"));
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(is("Invalid argument for calculating percentage"));
         calculatePercentageAmount(valueOf(1000), null);
     }
 
