@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 import org.hamcrest.Matcher;
 
 public class CommonMatcher {
-	
+
 	private CommonMatcher() {
-		
+
 	}
-	
+
 	public static Matcher<BigDecimal> isExactly(final double value) {
-        return closeTo(BigDecimal.valueOf(value), BigDecimal.ZERO);
-    }
+		return closeTo(BigDecimal.valueOf(value), BigDecimal.ZERO);
+	}
 
 }

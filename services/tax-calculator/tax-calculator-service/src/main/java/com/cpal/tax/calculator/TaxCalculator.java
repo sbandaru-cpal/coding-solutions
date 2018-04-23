@@ -18,7 +18,7 @@ public class TaxCalculator {
 		}
 
 		if (rate == null) {
-			throw new IllegalArgumentException("Invalid operation for Calculating");
+			throw new IllegalArgumentException("Invalid argument for calculating percentage");
 		}
 		return divide(multiply(price, rate), valueOf(100));
 	}
