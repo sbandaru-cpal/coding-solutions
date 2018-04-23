@@ -1,7 +1,7 @@
 package com.cpal.tax.calculator.service;
 
 import static com.cpal.common.util.NumberUtil.add;
-import static com.cpal.tax.calculator.util.TaxUtil.calculateSalesTax;
+import static com.cpal.tax.calculator.TaxCalculator.calculateSalesTax;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

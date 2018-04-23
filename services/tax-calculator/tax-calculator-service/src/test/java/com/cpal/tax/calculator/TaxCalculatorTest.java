@@ -1,7 +1,7 @@
-package com.cpal.tax.calculator.util;
+package com.cpal.tax.calculator;
 
 import static com.cpal.common.unit.test.CommonMatcher.isExactly;
-import static com.cpal.tax.calculator.util.TaxUtil.calculateSalesTax;
+import static com.cpal.tax.calculator.TaxCalculator.calculateSalesTax;
 import static java.math.BigDecimal.ZERO;
 import static java.math.BigDecimal.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class TaxUtilTest {
+public class TaxCalculatorTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
