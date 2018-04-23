@@ -40,8 +40,8 @@ public class TaxUtilTest {
 
     @Test
     public void calculatePercentageAmount_whenRateIsNull_throwsException() {
-        thrown.expect(UnsupportedOperationException.class);
-        thrown.expectMessage(is("Invalid operation for Calculating"));
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(is("Invalid argument for calculating percentage"));
         calculateSalesTax(valueOf(1000), null);
     }
 
