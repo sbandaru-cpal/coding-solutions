@@ -39,11 +39,15 @@ public class StateServiceTest {
     @Test
     public void calculateTaxedAmountForAllStates_returnsPricesForAllStates() {
         List<TaxPrice> actual = subject.calculateTotalPriceForAllStates(PRICE);
-
+        
+        TaxPrice alTaxPrice = actual.stream().
+			    filter(p -> p.getState().equals(State.AL)).
+			    findFirst().get();
+		
         assertThat(actual.size(), is(51));
-        assertThat(actual.get(0).getState().name(), is("AL"));
-        assertThat(actual.get(0).getTaxRate(), isExactly(4));
-        assertThat(actual.get(0).getTaxAmount(), isExactly(40));
-        assertThat(actual.get(0).getTotalAmount(), isExactly(1040));
+        assertThat(alTaxPrice.getState().name(), is("AL"));
+        assertThat(alTaxPrice.getTaxRate(), isExactly(4));
+        assertThat(alTaxPrice.getTaxAmount(), isExactly(40));
+        assertThat(alTaxPrice.getTotalAmount(), isExactly(1040));
     }
 }

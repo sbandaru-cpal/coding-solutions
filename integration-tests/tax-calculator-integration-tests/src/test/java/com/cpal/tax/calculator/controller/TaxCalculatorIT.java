@@ -1,19 +1,20 @@
 package com.cpal.tax.calculator.controller;
 
-import com.cpal.tax.calculator.api.State;
-import com.cpal.tax.calculator.api.TaxPrice;
-import com.cpal.tax.calculator.api.TypeData;
-import com.cpal.tax.calculator.client.TaxCalculatorClient;
-import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
-import org.junit.Test;
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
+import org.junit.Test;
+
+import com.cpal.tax.calculator.api.State;
+import com.cpal.tax.calculator.api.TaxPrice;
+import com.cpal.tax.calculator.api.TypeData;
+import com.cpal.tax.calculator.client.TaxCalculatorClient;
 
 public class TaxCalculatorIT {
 
@@ -36,11 +37,15 @@ public class TaxCalculatorIT {
 	public void calculateTotalPriceForAllStates_returnsTaxedAmounts() {
 		List<TaxPrice> actual  = taxCalculatorClient.calculateTotalPriceForAllStates(PRICE);
 
+		TaxPrice alTaxPrice = actual.stream().
+			    filter(p -> p.getState().equals(State.AL)).
+			    findFirst().get();
+		
 		assertThat(actual.size(), is(51));
-		assertThat(actual.get(0).getState().name(), is("AL"));
-		assertThat(actual.get(0).getTaxRate(), isExactly(4));
-		assertThat(actual.get(0).getTaxAmount(), isExactly(40));
-		assertThat(actual.get(0).getTotalAmount(), isExactly(1040));
+		assertThat(alTaxPrice.getState().name(), is("AL"));
+		assertThat(alTaxPrice.getTaxRate(), isExactly(4));
+		assertThat(alTaxPrice.getTaxAmount(), isExactly(40));
+		assertThat(alTaxPrice.getTotalAmount(), isExactly(1040));
 	}
 
     public static Matcher<BigDecimal> isExactly(final double value) {
