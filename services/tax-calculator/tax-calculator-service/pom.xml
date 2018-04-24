@@ -37,6 +37,17 @@
 			<artifactId>tax-calculator-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.cpal</groupId>
+			<artifactId>common-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cpal</groupId>
+			<artifactId>common-unit-test</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

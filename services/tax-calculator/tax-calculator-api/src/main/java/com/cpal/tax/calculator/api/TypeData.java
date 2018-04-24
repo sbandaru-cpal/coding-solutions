@@ -4,8 +4,6 @@ public class TypeData {
 
     private String code;
     private String value;
-    
-    
 
     public TypeData() {
 		super();
