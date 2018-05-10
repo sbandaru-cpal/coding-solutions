@@ -28,9 +28,9 @@ public class TaxCalculatorIT {
 	}
 
 	@Test
-	public void calculateTotalPrice_returnsTaxedTotalAmount() {
-		BigDecimal taxedTotalAmount  = taxCalculatorClient.calculateTotalPrice(State.CA, new BigDecimal(1000));
-		assertThat(taxedTotalAmount, Matchers.comparesEqualTo(new BigDecimal(1072.50)));
+	public void calculateTotalPriceForState_returnsTaxedTotalAmount() {
+		TaxPrice taxPrice  = taxCalculatorClient.calculateTotalPrice(State.CA, new BigDecimal(1000));
+		assertThat(taxPrice.getTotalAmount(), Matchers.comparesEqualTo(new BigDecimal(1072.50)));
 	}
 
 	@Test
