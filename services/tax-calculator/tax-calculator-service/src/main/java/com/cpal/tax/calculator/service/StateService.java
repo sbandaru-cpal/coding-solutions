@@ -25,9 +25,8 @@ public class StateService {
         return stateDAO.findAllStates();
     }
 
-    public BigDecimal calculateTaxedTotalPrice(State state, BigDecimal price) {
-        BigDecimal taxPercent = getStateTaxRate(state);
-        return add(price,calculateSalesTax(price, taxPercent));
+    public TaxPrice calculateTaxedTotalPrice(State state, BigDecimal price) {
+    	return buildTaxPrice(price, state);
     }
 
     public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {

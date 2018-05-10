@@ -32,13 +32,13 @@ public class TaxCalculatorClient {
 		return rateResponse.getBody();
 	}
 	
-	public BigDecimal calculateTotalPrice(State state, BigDecimal price) {
+	public TaxPrice calculateTotalPrice(State state, BigDecimal price) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseURL+"calculate/")
 		        .path(state.toString())
 		        .path("/")
 		        .path(price.toString());
-		ResponseEntity<BigDecimal> rateResponse = taxCalculatorTemplate.exchange(builder.toUriString(),
-						HttpMethod.POST, null, new ParameterizedTypeReference<BigDecimal>() {
+		ResponseEntity<TaxPrice> rateResponse = taxCalculatorTemplate.exchange(builder.toUriString(),
+						HttpMethod.POST, null, new ParameterizedTypeReference<TaxPrice>() {
 				});
 		return rateResponse.getBody();
 	}

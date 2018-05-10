@@ -30,10 +30,10 @@ public class StateServiceTest {
     }
 
     @Test
-    public void calculateTotalPrice_returnTotalPriceForCalifornia() {
-        BigDecimal actual = subject.calculateTaxedTotalPrice(State.CA, PRICE);
+    public void calculateTotalPriceForState_returnTotalPriceForCalifornia() {
+    	TaxPrice taxPrice = subject.calculateTaxedTotalPrice(State.CA, PRICE);
 
-        assertThat(actual, isExactly(1072.50));
+        assertThat(taxPrice.getTotalAmount(), isExactly(1072.50));
     }
 
     @Test
