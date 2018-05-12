@@ -4,8 +4,9 @@ import static com.cpal.common.util.NumberUtil.add;
 import static com.cpal.tax.calculator.TaxCalculator.calculateSalesTax;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,11 +31,9 @@ public class StateService {
     }
 
     public List<TaxPrice> calculateTotalPriceForAllStates(BigDecimal price) {
-        List<TaxPrice> taxPrices = new ArrayList<>();
-        for (State state : State.values()) {
-            taxPrices.add(buildTaxPrice(price, state));
-        }
-        return taxPrices;
+		return Arrays.stream(State.values())
+					 .map(state -> buildTaxPrice(price, state))
+					 .collect(Collectors.toList());
     }
 
     private TaxPrice buildTaxPrice(BigDecimal price, State state) {
