@@ -13,5 +13,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>tax-calculator</module>
+		<module>work-force</module>
 	</modules>
 </project>
